@@ -17,6 +17,7 @@ namespace Traversal_Reservation_NetCore_Project.Controllers
         [HttpGet]
         public IActionResult DestinationDetails(int id)
         {
+            ViewBag.id = id;
             var values = destinationManager.TGetByID(id);
             return View(values);
         }
