@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Traversal_Reservation_NetCore_Project.Models;
 
 namespace Traversal_Reservation_NetCore_Project
 {
@@ -28,7 +29,7 @@ namespace Traversal_Reservation_NetCore_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Context>();
-            services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>();
+            services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
             services.AddControllersWithViews();
 
             services.AddMvc(config =>
@@ -65,6 +66,14 @@ namespace Traversal_Reservation_NetCore_Project
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
             });
         }
     }
