@@ -12,6 +12,8 @@ namespace Traversal_Reservation_NetCore_Project.Areas.Member.Controllers
 {
 	[Area("Member")]
 	public class ReservationController : Controller
+
+
 	{
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
 
