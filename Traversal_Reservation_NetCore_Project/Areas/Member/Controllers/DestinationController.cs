@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Traversal_Reservation_NetCore_Project.Areas.Member.Controllers
 {
     [AllowAnonymous]
-    [Area("Member")]
+    [Area(nameof(Member))]
     public class DestinationController : Controller
     {
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());

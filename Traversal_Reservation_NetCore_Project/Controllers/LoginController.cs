@@ -42,7 +42,7 @@ namespace Traversal_Reservation_NetCore_Project.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("SignIn");
+                    return RedirectToAction(nameof(SignIn));
                 }
                 else
                 {

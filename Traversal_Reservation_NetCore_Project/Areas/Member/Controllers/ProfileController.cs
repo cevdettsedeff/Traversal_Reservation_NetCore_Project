@@ -9,7 +9,7 @@ using Traversal_Reservation_NetCore_Project.Areas.Member.Models;
 
 namespace Traversal_Reservation_NetCore_Project.Areas.Member.Controllers
 {
-    [Area("Member")]
+    [Area(nameof(Member))]
     [Route("Member/[controller]/[action]")]
     public class ProfileController : Controller
     {

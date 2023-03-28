@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Traversal_Reservation_NetCore_Project.ViewComponents.MemberDashboard
 {
-    public class _ProfileInformation
+    public class _ProfileInformation: ViewComponent
     {
-        public class _FeaturePartial : ViewComponent
-        {
+       
             private readonly UserManager<AppUser> _userManager;
 
-            public _FeaturePartial(UserManager<AppUser> userManager)
+            public _ProfileInformation(UserManager<AppUser> userManager)
             {
                 _userManager = userManager;
             }
@@ -21,11 +20,11 @@ namespace Traversal_Reservation_NetCore_Project.ViewComponents.MemberDashboard
             public async Task<IViewComponentResult> InvokeAsync()
             {
                 var values = await _userManager.FindByNameAsync(User.Identity.Name);
-                ViewBag.memberName = values.UserName + " " + values.Surname;
+                ViewBag.memberName = values.Name + " " + values.Surname;
                 ViewBag.memberPhone = values.PhoneNumber;
                 ViewBag.memberMail = values.Email;
                 return View();
             }
-        }
+
     }
 }

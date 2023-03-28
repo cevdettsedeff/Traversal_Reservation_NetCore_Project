@@ -10,10 +10,8 @@ using System.Threading.Tasks;
 
 namespace Traversal_Reservation_NetCore_Project.Areas.Member.Controllers
 {
-	[Area("Member")]
-	public class ReservationController : Controller
-
-
+    [Area(nameof(Member))]
+    public class ReservationController : Controller
 	{
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
 
@@ -68,7 +66,7 @@ namespace Traversal_Reservation_NetCore_Project.Areas.Member.Controllers
             reservation.AppUserId = 3;
             reservation.Status = "Onay bekliyor";
             reservationManager.TAdd(reservation);
-            return RedirectToAction("MyCurrentReservation");
+            return RedirectToAction(nameof(MyCurrentReservation));
         }
     }
 }
