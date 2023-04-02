@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public Newsletter TGetByID(int id)
         {
-            throw new NotImplementedException();
+            return _newsletterDal.GetByID(id); 
         }
 
         public List<Newsletter> TGetList()

@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public Feature TGetByID(int id)
         {
-            throw new NotImplementedException();
+           return _featureDal.GetByID(id);
         }
 
         public List<Feature> TGetList()

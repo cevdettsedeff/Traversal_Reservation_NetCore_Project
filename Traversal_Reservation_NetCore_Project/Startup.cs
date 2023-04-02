@@ -1,4 +1,9 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using BusinessLayer.Container;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +34,19 @@ namespace Traversal_Reservation_NetCore_Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Loglama için kullanýyoruz. Debug'ýn seviyesi 1'dir.
+            services.AddLogging(x =>
+            {
+                x.ClearProviders();
+                x.SetMinimumLevel(LogLevel.Debug);
+                x.AddDebug();
+            });
+
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
+
+            services.ContainerDependencies();
+
             services.AddControllersWithViews();
 
             services.AddMvc(config =>
@@ -54,6 +71,8 @@ namespace Traversal_Reservation_NetCore_Project
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseStatusCodePages("/ErrorPage/Error404", "?code={0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();

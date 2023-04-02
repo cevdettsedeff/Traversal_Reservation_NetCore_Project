@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public Comment TGetByID(int id)
         {
-            throw new NotImplementedException();
+            return _commentDal.GetByID(id);
         }
 
         public List<Comment> TGetList()
@@ -46,6 +46,11 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Comment t)
         {
             _commentDal.Update(t);
+        }
+
+        public List<Comment> TGetListCommentWithDestination()
+        {
+            return _commentDal.GetListCommentWithDestination();
         }
     }
 }

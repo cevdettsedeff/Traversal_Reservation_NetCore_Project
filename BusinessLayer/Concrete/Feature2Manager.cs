@@ -25,22 +25,22 @@ namespace BusinessLayer.Concrete
 
         public void TDelete(Feature2 t)
         {
-            throw new NotImplementedException();
+            _feature2Dal.Delete(t);
         }
 
         public Feature2 TGetByID(int id)
         {
-            throw new NotImplementedException();
+            return _feature2Dal.GetByID(id);
         }
 
         public List<Feature2> TGetList()
         {
-            throw new NotImplementedException();
+            return _feature2Dal.GetList();
         }
 
         public void TUpdate(Feature2 t)
         {
-            throw new NotImplementedException();
+            _feature2Dal.Update(t);
         }
     }
 }

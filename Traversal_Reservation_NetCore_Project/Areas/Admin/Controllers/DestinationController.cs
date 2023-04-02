@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,16 @@ namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
 
     public class DestinationController : Controller
     {
-        DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
+        private readonly IDestinationService _destinationService;
+
+        public DestinationController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
+
         public IActionResult Index()
         {
-            var values = destinationManager.TGetList();
+            var values = _destinationService.TGetList();
             return View(values);
         }
 
@@ -26,21 +33,21 @@ namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddDestination(Destination destination)
         {
-            destinationManager.TAdd(destination);
+            _destinationService.TAdd(destination);
             return RedirectToAction("Index", "Destination", "Admin"); // yönlendirmeyi düzenle
         }
 
         public IActionResult DeleteDestination(int id)
         {
-            var values = destinationManager.TGetByID(id);
-            destinationManager.TDelete(values);
+            var values = _destinationService.TGetByID(id);
+            _destinationService.TDelete(values);
             return RedirectToAction("Index", "Destination", "Admin" ); // yönlendirmeyi düzenle
         }
 
         [HttpGet]
         public IActionResult UpdateDestination(int id)
         {
-            var values = destinationManager.TGetByID(id);
+            var values = _destinationService.TGetByID(id);
             return View(values);
         }
 
@@ -48,7 +55,7 @@ namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult UpdateDestination(Destination destination)
         {
-            destinationManager.TUpdate(destination);
+            _destinationService.TUpdate(destination);
             return RedirectToAction("Index", "Destination", "Admin"); // yönlendirmeyi düzenle
         }
     }
