@@ -46,8 +46,18 @@
                 }
             }
 
-            <td><a href="/Admin/Guide/EditGuide/" class="btn btn-outline-info">Düzenle</a></td>
+                <td><a href="/Admin/Guide/UpdateGuide/@item.GuideID" class="btn btn-outline-info">Düzenle</a></td>
+
+                <td><a href="/Admin/Guide/DeleteGuide/@item.GuideID" class="btn btn-outline-danger" onclick="return confirm('Kullanıcıyı silmek istediğinizden emin misiniz?')">Sil</a></td>
     </tr>
     }
 </table>
 <a href="/Admin/Guide/AddGuide/" class="btn btn-outline-primary">Yeni Rehber Girişi</a>
+
+                         <script>
+       function clicked(e) {
+            if (!confirm('Kullanıcıyı silmek istediğinizden emin misiniz?')) {
+                e.preventDefault();
+            }
+        }
+    </script> 

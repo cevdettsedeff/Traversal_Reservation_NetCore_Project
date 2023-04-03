@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Update.Internal;
 namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
 {
     [Area(nameof(Admin))]
+    [Route("Admin/[controller]/[action]/{id?}")]
 
     public class DestinationController : Controller
     {
@@ -34,14 +35,14 @@ namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
         public IActionResult AddDestination(Destination destination)
         {
             _destinationService.TAdd(destination);
-            return RedirectToAction("Index", "Destination", "Admin"); // yönlendirmeyi düzenle
+            return RedirectToAction("Index", "Destination", new {area = "Admin"}); 
         }
 
         public IActionResult DeleteDestination(int id)
         {
             var values = _destinationService.TGetByID(id);
             _destinationService.TDelete(values);
-            return RedirectToAction("Index", "Destination", "Admin" ); // yönlendirmeyi düzenle
+            return RedirectToAction("Index", "Destination", new { area = "Admin" }); 
         }
 
         [HttpGet]
@@ -56,7 +57,7 @@ namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
         public IActionResult UpdateDestination(Destination destination)
         {
             _destinationService.TUpdate(destination);
-            return RedirectToAction("Index", "Destination", "Admin"); // yönlendirmeyi düzenle
+            return RedirectToAction("Index", "Destination", new { area = "Admin" }); 
         }
     }
 }
