@@ -38,6 +38,8 @@ namespace Traversal_Reservation_NetCore_Project
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
 
+            services.AddHttpClient();
+
             services.ContainerDependencies(); //container extensions kýsmýnda
 
             services.AddAutoMapper(typeof(Startup));
