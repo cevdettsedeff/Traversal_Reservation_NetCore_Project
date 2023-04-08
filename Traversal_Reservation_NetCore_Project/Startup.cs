@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.IO;
+using Traversal_Reservation_NetCore_Project.CQRS.Handlers.DestinationHandlers;
 using Traversal_Reservation_NetCore_Project.Models;
 
 namespace Traversal_Reservation_NetCore_Project
@@ -27,6 +28,12 @@ namespace Traversal_Reservation_NetCore_Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<GetAllDestinationQueryHandler>(); // CQRS kullanmak için ekledik.
+            services.AddScoped<GetDestinationByIdQueryHandler>(); // CQRS kullanmak için ekledik.
+            services.AddScoped<AddDestinationCommandHandler>(); // CQRS kullanmak için ekledik.
+            services.AddScoped<DeleteDestinationCommandHandler>(); // CQRS kullanmak için ekledik.
+            services.AddScoped<UpdateDestinationCommandHandler>(); // CQRS kullanmak için ekledik.
+
             // Loglama için kullanýyoruz. Debug'ýn seviyesi 1'dir.
             services.AddLogging(x =>
             {
