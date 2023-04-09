@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Traversal_Reservation_NetCore_Project.CQRS.Commands.DestinationCommand;
+using Traversal_Reservation_NetCore_Project.CQRS.Commands.DestinationCommands;
 using Traversal_Reservation_NetCore_Project.CQRS.Handlers.DestinationHandlers;
 using Traversal_Reservation_NetCore_Project.CQRS.Queries.DestinationQueries;
 

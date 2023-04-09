@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer.Concrete;
-using Traversal_Reservation_NetCore_Project.CQRS.Commands.DestinationCommand;
+using Traversal_Reservation_NetCore_Project.CQRS.Commands.DestinationCommands;
 
 namespace Traversal_Reservation_NetCore_Project.CQRS.Handlers.DestinationHandlers
 {

@@ -1,4 +1,4 @@
-﻿namespace Traversal_Reservation_NetCore_Project.CQRS.Commands.DestinationCommand
+﻿namespace Traversal_Reservation_NetCore_Project.CQRS.Commands.DestinationCommands
 {
     public class DeleteDestinationCommand
     {

@@ -2,6 +2,7 @@ using BusinessLayer.Container;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +34,9 @@ namespace Traversal_Reservation_NetCore_Project
             services.AddScoped<AddDestinationCommandHandler>(); // CQRS kullanmak için ekledik.
             services.AddScoped<DeleteDestinationCommandHandler>(); // CQRS kullanmak için ekledik.
             services.AddScoped<UpdateDestinationCommandHandler>(); // CQRS kullanmak için ekledik.
+
+            services.AddMediatR(typeof(Startup)); //Mediatr sayesinde yukarýdaki gibi tek tek scoped için uðraþmýyoruz.
+            // assembly türünde parametre yerine startup kullanýyoruz.
 
             // Loglama için kullanýyoruz. Debug'ýn seviyesi 1'dir.
             services.AddLogging(x =>

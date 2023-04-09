@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
-using Traversal_Reservation_NetCore_Project.CQRS.Commands.DestinationCommand;
+using System;
+using Traversal_Reservation_NetCore_Project.CQRS.Commands.DestinationCommands;
 
 namespace Traversal_Reservation_NetCore_Project.CQRS.Handlers.DestinationHandlers
 {
@@ -25,5 +26,6 @@ namespace Traversal_Reservation_NetCore_Project.CQRS.Handlers.DestinationHandler
             });
             _context.SaveChanges();
         }
+
     }
 }
