@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,11 @@ namespace BusinessLayer.Concrete
         public ContactUsManager(IContactUsDal contactUsDal)
         {
             _contactUsDal = contactUsDal;
+        }
+
+        public List<ContactUs> TGetByFilter(Expression<Func<ContactUs, bool>> filter)
+        {
+            return _contactUsDal.GetListByFilter(filter);
         }
 
         public void TAdd(ContactUs t)

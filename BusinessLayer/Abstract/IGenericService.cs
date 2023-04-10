@@ -14,6 +14,6 @@ namespace BusinessLayer.Abstract
         void TUpdate(T t);
         List<T> TGetList();
         T TGetByID(int id);
-      //  List<T> GetByFilter(Expression<Func<T, bool>> filter);
+        List<T> TGetByFilter(Expression<Func<T, bool>> filter);
     }
 }

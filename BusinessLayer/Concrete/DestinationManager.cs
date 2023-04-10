@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,11 @@ namespace BusinessLayer.Concrete
         public DestinationManager(IDestinationDal destinationDal)
         {
             _destinationDal = destinationDal;
+        }
+
+        public List<Destination> TGetByFilter(Expression<Func<Destination, bool>> filter)
+        {
+            return _destinationDal.GetListByFilter(filter);
         }
 
         public void TAdd(Destination t)

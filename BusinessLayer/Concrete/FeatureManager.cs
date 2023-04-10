@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +27,11 @@ namespace BusinessLayer.Concrete
         public void TDelete(Feature t)
         {
             _featureDal.Delete(t);
+        }
+
+        public List<Feature> TGetByFilter(Expression<Func<Feature, bool>> filter)
+        {
+            return _featureDal.GetListByFilter(filter);
         }
 
         public Feature TGetByID(int id)

@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +27,11 @@ namespace BusinessLayer.Concrete
         public void TDelete(Newsletter t)
         {
             _newsletterDal.Delete(t);
+        }
+
+        public List<Newsletter> TGetByFilter(Expression<Func<Newsletter, bool>> filter)
+        {
+            return _newsletterDal.GetListByFilter(filter);
         }
 
         public Newsletter TGetByID(int id)
