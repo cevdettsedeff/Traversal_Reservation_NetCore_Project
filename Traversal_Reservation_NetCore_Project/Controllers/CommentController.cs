@@ -1,8 +1,10 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 
 namespace Traversal_Reservation_NetCore_Project.Controllers
 {
@@ -10,10 +12,19 @@ namespace Traversal_Reservation_NetCore_Project.Controllers
     {
         CommentManager commentManager = new CommentManager(new EfCommentDal());
 
+        private readonly UserManager<AppUser> _userManager;
+
+        public CommentController( UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
 
         [HttpGet]
         public PartialViewResult AddComment()
         {
+            //ViewBag.destID = id;
+            //var value = await _userManager.FindByNameAsync(User.Identity.Name);
+            //ViewBag.userID = value.Id;
             return  PartialView();
         }
 

@@ -1,15 +1,25 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Traversal_Reservation_NetCore_Project.ViewComponents.Comment
 {
     public class _CommentListPartial:ViewComponent
     {
-        CommentManager commentManager = new CommentManager(new EfCommentDal());
+        ICommentService _commentService;
+
+        public _CommentListPartial(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
+
         public IViewComponentResult Invoke(int id)
         {
-            var values = commentManager.TGetDestinationById(id);
+            var values = _commentService.TGetListCommentWithDestinationAndUser(id);
+            int count =values.Count();
+            ViewBag.count = count;
             return View(values);
         }
     }

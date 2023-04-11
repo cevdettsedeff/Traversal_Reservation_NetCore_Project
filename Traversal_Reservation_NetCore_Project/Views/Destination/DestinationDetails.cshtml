@@ -25,31 +25,29 @@
   <!-- //about breadcrumb -->
   <!--/blog-->
   <div class="py-5 w3l-homeblock1 text-center">
-    <div class="container mt-md-3">
-        <h3 class="blog-desc-big text-center mb-4">@Model.City</h3>
-        <p>@Model.Description...</p>
+    <div class="container mt-md-4">
+        <h3 class="blog-desc-big text-center mb-4">@Model.Description&hellip;</h3>
+        <p> Yetkin rehberlerimizle en güncel seyahat hikayelerimizi okuyabilir ve yorumlarınızı bizerle paylaşabilirsiniz &hearts;</p>
         <br />
-        <div class="blog-post-align">
+        <div class="py-2 w3l-homeblock1 text-center">
             <div class="blog-post-img">
-                <a href="#"><img src="test" alt="" class="rounded-circle img-fluid" /></a>
+                <a href="#"><img src="@Model.Guide.Image" alt="" class="rounded-circle img-fluid" style="height:75px; width:75px;" /></a>
             </div>
             
             <div class="blog-post-info">
                 <div class="author align-items-center mb-1">
-                    <a href="#">Johnson smith</a> in <a href="#url">Traversal</a>
+                   Rehber: <a href="#"> @Model.Guide.Name</a><br /> Tur Rotaları: <a href="#url">@Model.Guide.Description</a>
                 </div>
                 <ul class="blog-meta">
                     <li class="meta-item blog-lesson">
-                        <span class="meta-value"> June 13, 2020 </span>
+                        <span class="meta-value"> @(((DateTime)Model.Date).ToString("dd-MMM-yyyy")) </span>
                     </li>
-                    <li class="meta-item blog-students">
-                        <span class="meta-value"> 6min read</span>
-                    </li>
+                   
                 </ul>
             </div>
         </div>
     </div>
-</div>
+</div> 
 <section class="blog-post-main w3l-homeblock1">
     <!--/blog-post-->
     <div class="blog-content-inf pb-5">
@@ -60,13 +58,15 @@
                 </div>
             </div>
             <div class="single-post-content">
-                <p class="alphabet mb-4"><span class="big-letter">A</span>@Model.Details1</p>
+                <h1>@Model.City</h1>
+                <br />
+                <p>&rArr; @Model.Details1</p>
 
                 <blockquote class="blockquote my-5">
                     <div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span></div>
-                    Gezi tur seyahat rotralar aslkdaslkd
+                    @Model.Description
                     <footer class="blockquote-footer mt-3">
-                        Smith lara</footer>
+                        @Model.Guide.Name</footer>
                 </blockquote>
 
                 <div class="sing-post-thumb mb-5 row pt-3">
@@ -79,7 +79,7 @@
                 </div>
                 <h3 class="blog-desc-big m-0 mb-lg-4 mb-3">2.Paragraf</h3>
                 <p class="mb-4">
-                    @Model.Details2    
+                   &rArr; @Model.Details2    
                 </p>
                 
 
@@ -87,9 +87,9 @@
                     <div class="buttons-singles tags">
                         <h4>Tags :</h4>
                         <a href="#blog-tag">Gezi</a>
-                        <a href="#blog-tag">Culture</a>
-                        <a href="#blog-tag">Hotel</a>
-                        <a href="#blog-tag">Food</a>
+                        <a href="#blog-tag">Kültür</a>
+                        <a href="#blog-tag">Otel</a>
+                        <a href="#blog-tag">Yemek</a>
                     </div>
                     <div class="buttons-singles">
                         <h4>Share :</h4>
@@ -100,167 +100,49 @@
                     </div>
                 </div>
                 
-                <!--//author-card-->
-                    @await Component.InvokeAsync("_GuideDetails")
-                <!--//author-card-->
+                 <div class="author-card mt-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-3 col-6">
+                            <div>
+                                <img src="@Model.Guide.Image" alt="" class="rounded-circle img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-sm-9 mt-sm-0 mt-3">
+                            <h3 class="mb-3 title">@Model.Guide.Name</h3>
+                            <p> @Model.Guide.LongDescription</p>
+                            <ul class="author-icons mt-4">
+                               
+                                <li><a class="twitter" href="@Model.Guide.TwitterUrl"><span class="fa fa-twitter"
+                                            aria-hidden="true"></span></a></li>
+
+                                <li><a class="instagram" href="@Model.Guide.InstagramUrl"><span class="fa fa-instagram"
+                                            aria-hidden="true"></span></a></li>
+
+                                <li><a class="linkedin" href="@Model.Guide.LinkedinUrl"><span class="fa fa-linkedin"
+                                            aria-hidden="true"></span></a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                
+                    @*@await Component.InvokeAsync("_GuideDetails")*@
+                
 
 
                     @await Component.InvokeAsync("_CommentListPartial",new {id = ViewBag.id})
 
 
-                    @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml")
+                    @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml", new {id = ViewBag.destID})
             </div>
         </div>
         <!--//blog-post-->
         </div>
 </section>
 
-  <!--/w3l-footer-29-main-->
-  <footer>
-    <!-- footer -->
-    <section class="w3l-footer">
-      <div class="w3l-footer-16-main py-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 column">
-              <div class="row">
-                <div class="col-md-4 column">
-                  <h3>Company</h3>
-                  <ul class="footer-gd-16">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                  </ul>
-                </div>
-                <div class="col-md-4 column mt-md-0 mt-4">
-                  <h3>Useful Links</h3>
-                  <ul class="footer-gd-16">
-                    <li><a href="#url">Destinations</a></li>
-                    <li><a href="#url">Our Branches</a></li>
-                    <li><a href="#url">Latest Media</a></li>
-                    <li><a href="about.html">About Company</a></li>
-                    <li><a href="#url">Our Packages</a></li>
-                  </ul>
-                </div>
-                <div class="col-md-4 column mt-md-0 mt-4">
-                  <h3>Our Services</h3>
-                  <ul class="footer-gd-16">
-                    <li><a href="#url">Privacy Policy</a></li>
-                    <li><a href="#url">Our Terms</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="landing-single.html">Landing Page</a></li>
-                    <li><a href="#url">Our Guides</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-12 column pl-lg-5 column4 mt-lg-0 mt-5">
-              <h3>Newsletter </h3>
-              <div class="end-column">
-                <h4>Get latest updates and offers.</h4>
-                <form action="#" class="subscribe" method="post">
-                  <input type="email" name="email" placeholder="Email Address" required="">
-                  <button type="submit">Go</button>
-                </form>
-                <p>Sign up for our latest news & articles. We won’t give you spam mails.</p>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex below-section justify-content-between align-items-center pt-4 mt-5">
-            <div class="columns text-lg-left text-center">
-              <p>&copy; 2020 Traversal. All rights reserved.
-
-              </p>
-            </div>
-            <div class="columns-2 mt-lg-0 mt-3">
-              <ul class="social">
-                <li><a href="#facebook"><span class="fa fa-facebook" aria-hidden="true"></span></a>
-                </li>
-                <li><a href="#linkedin"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
-                </li>
-                <li><a href="#twitter"><span class="fa fa-twitter" aria-hidden="true"></span></a>
-                </li>
-                <li><a href="#google"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
-                </li>
-                <li><a href="#github"><span class="fa fa-github" aria-hidden="true"></span></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- move top -->
-      <button onclick="topFunction()" id="movetop" title="Go to top">
-        <span class="fa fa-angle-up"></span>
-      </button>
-      <script>
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function () {
-          scrollFunction()
-        };
-
-        function scrollFunction() {
-          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("movetop").style.display = "block";
-          } else {
-            document.getElementById("movetop").style.display = "none";
-          }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
-        }
-      </script>
-      <!-- //move top -->
-      <script>
-        $(function () {
-          $('.navbar-toggler').click(function () {
-            $('body').toggleClass('noscroll');
-          })
-        });
-      </script>
-    </section>
-    <!-- //footer -->
-  </footer>
-
-  <!-- Template JavaScript -->
-  <script src="assets/js/jquery-3.3.1.min.js"></script>
-  <script src="assets/js/theme-change.js"></script>
-  <!--/MENU-JS-->
-  <script>
-    $(window).on("scroll", function () {
-      var scroll = $(window).scrollTop();
-
-      if (scroll >= 80) {
-        $("#site-header").addClass("nav-fixed");
-      } else {
-        $("#site-header").removeClass("nav-fixed");
-      }
-    });
-
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-      $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-      if ($(window).width() > 991) {
-        $("header").removeClass("active");
-      }
-      $(window).on("resize", function () {
-        if ($(window).width() > 991) {
-          $("header").removeClass("active");
-        }
-      });
-    });
-  </script>
-  <!--//MENU-JS-->
-
-  <script src="assets/js/bootstrap.min.js"></script>
+ 
 
 </body>
 

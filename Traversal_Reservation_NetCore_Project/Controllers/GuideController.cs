@@ -1,18 +1,20 @@
 ﻿using BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Traversal_Reservation_NetCore_Project.ViewComponents.Destination
+namespace Traversal_Reservation_NetCore_Project.Controllers
 {
-    public class _GuideDetails:ViewComponent
+    [AllowAnonymous]
+    public class GuideController : Controller
     {
         private readonly IGuideService _guideService;
 
-        public _GuideDetails(IGuideService guideService)
+        public GuideController(IGuideService guideService)
         {
             _guideService = guideService;
         }
 
-        public IViewComponentResult Invoke()
+        public IActionResult Index()
         {
             var values = _guideService.TGetList();
             return View(values);
