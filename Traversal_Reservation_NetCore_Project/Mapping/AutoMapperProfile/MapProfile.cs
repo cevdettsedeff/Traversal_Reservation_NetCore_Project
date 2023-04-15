@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DTOLayer.DTOs.AnnouncementDTOs;
 using DTOLayer.DTOs.AppUserDTOs;
+using DTOLayer.DTOs.ContactUsDTOs;
 using EntityLayer.Concrete;
 
 namespace Traversal_Reservation_NetCore_Project.Mapping.AutoMapperProfile
@@ -23,6 +24,8 @@ namespace Traversal_Reservation_NetCore_Project.Mapping.AutoMapperProfile
 
             CreateMap<AnnouncementUpdateDTO, Announcement>();
             CreateMap<Announcement, AnnouncementUpdateDTO>();
+
+            CreateMap<ContactUsDTO, ContactUs>().ReverseMap();
 
         }
     }
