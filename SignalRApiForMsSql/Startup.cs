@@ -7,15 +7,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using SignalRApi.DataAccessLayer;
-using SignalRApi.Hubs;
-using SignalRApi.Model;
+using SignalRApiForMsSql.DataAccessLayer;
+using SignalRApiForMsSql.Hubs;
+using SignalRApiForMsSql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SignalRApi
+namespace SignalRApiForMsSql
 {
     public class Startup
     {
@@ -37,12 +37,15 @@ namespace SignalRApi
                 builder.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed((host) => true).AllowCredentials();
 
             }));
-            services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SignalRApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SignalRApiForMsSql", Version = "v1" });
+            });
+
+            services.AddDbContext<Context>(options =>
+            {
+                options.UseSqlServer(Configuration["DefaultConnection"]);
             });
         }
 
@@ -53,7 +56,7 @@ namespace SignalRApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SignalRApi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SignalRApiForMsSql v1"));
             }
 
             app.UseRouting();
