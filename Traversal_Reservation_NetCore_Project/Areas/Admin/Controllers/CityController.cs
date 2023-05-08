@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DocumentFormat.OpenXml.Spreadsheet;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using Traversal_Reservation_NetCore_Project.Models;
 
 namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area(nameof(Admin))]
     public class CityController : Controller
     {

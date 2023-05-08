@@ -1,35 +1,114 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 @{
     Layout = null;
 }
 
+ <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
+    <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
+    <meta name="author" content="ThemeSelect">
+    <title>Traversal Üye Paneli</title>
+    <link rel="apple-touch-icon" href="~/Member_Template/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Member_Template/theme-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Member_Template/theme-assets/css/vendors.css">
 
-<!DOCTYPE html>
-<html lang="en">
+    <link rel="stylesheet" type="text/css" href="~/Member_Template/theme-assets/css/app-lite.css">
 
-        @await Html.PartialAsync("/Views/MemberLayoutPartial/_HeaderPartial.cshtml")
+    <link rel="stylesheet" type="text/css" href="~/Member_Template/theme-assets/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="~/Member_Template/theme-assets/css/core/colors/palette-gradient.css">
 
+  </head>
 
-<body class="g-sidenav-show  bg-gray-100">
+ <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+    <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light">
+        <div class="navbar-wrapper">
+            <div class="navbar-container content">
+                <div class="collapse navbar-collapse show" id="navbar-mobile">
 
-        @await Html.PartialAsync("/Views/MemberLayoutPartial/_SidebarPartial.cshtml")
+                    @await Component.InvokeAsync("_MemberLayoutSearch")
+                    @await Component.InvokeAsync("_MemberLayoutLanguages")
+                    @await Component.InvokeAsync("_MemberLayoutNavbar")
 
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+    @*@await Component.InvokeAsync("_MemberLayoutSidebar")*@
 
-        @await Html.PartialAsync("/Views/MemberLayoutPartial/_NavbarPartial.cshtml")
-
-    <div class="container-fluid py-4">
-
-        @RenderBody()
-
+    <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="~/Member_Template/theme-assets/images/backgrounds/02.jpg">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav flex-row">
+                <li class="nav-item mr-auto">
+                    <a class="navbar-brand" href="index.html">
+                        <img class="brand-logo" alt="Chameleon admin logo" src="~/Member_Template/theme-assets/images/logo/logo.png" />
+                        <h3 class="brand-text">Traversal</h3>
+                    </a>
+                </li>
+                <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
+            </ul>
+        </div>
+        <div class="main-menu-content">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class=" nav-item">
+                    <a href="/Member/Dashboard/MemberDashboard/"><i class="ft-home"></i><span class="menu-title" data-i18n="">@localizer["Dashboard"]</span></a>
+                </li>
+                <li class=" nav-item">
+                    <a href="/Member/Profile/Index/"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">@localizer["Profilim"]</span></a>
+                </li>
+                <li class=" nav-item">
+                    <a href="/Member/Reservation/MyCurrentReservation/"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">@localizer["Aktif Rezv."]</span></a>
+                </li>
+                <li class=" nav-item">
+                    <a href="/Member/Reservation/MyOldReservation/"><i class="ft-clock"></i><span class="menu-title" data-i18n="">@localizer["Geçmiş Rezv."]</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Member/Reservation/MyApprovalReservation/"><i class="ft-cloud"></i><span class="menu-title" data-i18n="">@localizer["Onay Bekleyen Rezv."]</span></a>
+                </li>
+                <li class=" nav-item">
+                    <a href="/Member/Reservation/NewReservation/"><i class="ft-navigation"></i><span class="menu-title" data-i18n="">@localizer["Yeni Rezervasyon"]</span></a>
+                </li>
+                <li class=" nav-item">
+                    <a href="/Member/Comment/Index/"><i class="ft-command"></i><span class="menu-title" data-i18n="">@localizer["Yorumlarım"]</span></a>
+                </li>
+                <li class=" nav-item">
+                    <a href="/Member/Destination/Index/"><i class="ft-map"></i><span class="menu-title" data-i18n="">@localizer["Tur Rotaları"]</span></a>
+                </li>
+                <li class=" nav-item">
+                    <a href="/Member/LastDestination/Index/"><i class="ft-navigation-2"></i><span class="menu-title" data-i18n="">@localizer["Son Rotalar"]</span></a>
+                </li>
+                <li class=" nav-item">
+                    <a href="/Default/Index/"><i class="ft-power"></i><span class="menu-title" data-i18n="">@localizer["Siteye Git"]</span></a>
+                </li>
+                <li class=" nav-item">
+                    <a href="#"><i class="ft-lock"></i><span class="menu-title" data-i18n="">@localizer["Çıkış Yap"]</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="navigation-background"></div>
     </div>
 
-  </main>
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-wrapper-before"></div>
+            @await Component.InvokeAsync("_MemberLayoutHeaderContent")
 
-        @await Html.PartialAsync("/Views/MemberLayoutPartial/_RightbarPartial.cshtml")
+            <div class="content-body">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
 
-        @await Html.PartialAsync("/Views/MemberLayoutPartial/_ScriptsPartial.cshtml")
+    @await Component.InvokeAsync("_MemberLayoutFooter")
 
+    <script src="~/Member_Template/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+    <script src="~/Member_Template/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+    <script src="~/Member_Template/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
 </body>
 </html>

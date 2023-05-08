@@ -2,11 +2,13 @@
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Update.Internal;
 
 namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area(nameof(Admin))]
     [Route("Admin/[controller]/[action]/{id?}")]
 

@@ -8,7 +8,7 @@ namespace Traversal_Reservation_NetCore_Project.ViewComponents.Comment
 {
     public class _CommentListPartial:ViewComponent
     {
-        ICommentService _commentService;
+        private readonly ICommentService _commentService;
 
         public _CommentListPartial(ICommentService commentService)
         {

@@ -11,7 +11,7 @@ using Traversal_Reservation_NetCore_Project.Areas.Admin.Models;
 
 namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     [Area(nameof(Admin))]
     [Route("Admin/[controller]/[action]/{id?}")]
 

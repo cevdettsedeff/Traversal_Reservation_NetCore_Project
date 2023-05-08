@@ -20,6 +20,7 @@
         <th>Düzenle</th>
         <th>Yorumlar</th>
         <th>Tur Geçmişi</th>
+        <th>Rol İşlemleri</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -37,6 +38,7 @@
                 <td><a href="/Admin/User/EditUser/@item.Id" class="btn btn-outline-success">Düzenle</a></td>
                 <td><a href="/Admin/User/CommentUser/@item.Id" class="btn btn-outline-info">Yorumlar</a></td>
                 <td><a href="/Admin/User/ReservationUser/@item.Id" class="btn btn-outline-secondary">Tur Geçmişi</a></td>
+                    <td><a href="/Admin/Role/AssignRole/@item.Id" class="btn btn-outline-warning">Rol Ata</a></td>
             </tr>
     }
 </table>

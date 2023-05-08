@@ -3,6 +3,7 @@ using ClosedXML.Excel;
 using DataAccessLayer.Concrete;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using Traversal_Reservation_NetCore_Project.Models;
 
 namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area(nameof(Admin))]
     public class ReportController : Controller
     {

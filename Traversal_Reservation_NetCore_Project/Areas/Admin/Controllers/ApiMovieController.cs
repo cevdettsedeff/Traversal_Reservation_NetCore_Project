@@ -10,8 +10,9 @@ using Newtonsoft.Json;
 
 namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area(nameof(Admin))]
-    [AllowAnonymous]
+
     public class ApiMovieController : Controller
     {
         List<ApiMovieViewModel> apiMovies = new List<ApiMovieViewModel>();

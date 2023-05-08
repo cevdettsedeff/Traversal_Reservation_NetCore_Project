@@ -8,7 +8,7 @@ using Traversal_Reservation_NetCore_Project.CQRS.Queries.GuideQueries;
 namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
 {
     [Area(nameof(Admin))]
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     [Route("Admin/[controller]/[action]/{id?}")]
     public class GuideMediatRController : Controller
     {

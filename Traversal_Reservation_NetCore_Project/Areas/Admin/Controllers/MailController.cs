@@ -1,10 +1,12 @@
 ﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using Traversal_Reservation_NetCore_Project.Models;
 
 namespace Traversal_Reservation_NetCore_Project.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area(nameof(Admin))]
     public class MailController : Controller
     {
